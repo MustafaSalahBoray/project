@@ -1,0 +1,23 @@
+$(document).ready(function(){
+ $(document).on("submit","#add",function(form){
+ 	form.preventDefault();
+ 	$.ajax({
+             url:"http://localhost/project/apitest.php",
+             type:"POST",
+            dataType:"json",
+            data:new FormData(this),
+            processData:false,
+            contentType:false,
+            beforeSend:function(){
+            	console.log("welcome");
+            },
+             sucess:function(response){
+            	console.log(response);
+            },
+             error:function(request,error){
+            	console.log(arguments);
+            	console.log("error"+error);
+            },
+ 	})
+ });
+});
